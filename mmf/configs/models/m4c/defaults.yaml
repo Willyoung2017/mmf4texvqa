@@ -17,10 +17,10 @@ model_config:
       num_hidden_layers: 4
     classifier:
       type: logit
-        params:
-          text_hidden_dim: 768
-          obj_hidden_dim: 2048
-          ocr_hidden_dim: 3002
+      params:
+        text_hidden_dim: 768
+        obj_hidden_dim: 2048
+        ocr_hidden_dim: 3002
     model_data_dir: ${env.data_dir}
     losses:
     - type: m4c_decoding_bce_with_mask
