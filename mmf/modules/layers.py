@@ -181,7 +181,7 @@ class MLPClassifer(nn.Module):
             x = layer(x)
         return x
 
-'''
+
 # original logit classifier
 class LogitClassifier(nn.Module):
     def __init__(self, in_dim, out_dim, **kwargs):
@@ -254,7 +254,7 @@ class LogitClassifier(nn.Module):
         logit_value = text_val + obj_val + ocr_val
 
         return logit_value
-
+'''
 
 class WeightNormClassifier(nn.Module):
     def __init__(self, in_dim, out_dim, hidden_dim, dropout):
