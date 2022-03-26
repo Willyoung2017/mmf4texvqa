@@ -177,8 +177,15 @@ class M4C(BaseModel):
         # results = {"scores": fwd_results["scores"]}
         # return results
 
-        model_output = {"scores": self.calculate_logits(fwd_results["mmt_seq_output"])}
-        print("shape of model output:", fwd_results["mmt_seq_output"].shape)
+        # reshape mmt output for classifier
+        mmt_output = fwd_results["mmt_seq_output"]
+        mmt_output = torch.permute(mmt_output, (0, 2, 1))
+        linear_transform = nn.Linear(mmt_output.shape[2], 1)
+        mmt_output = linear_transform(mmt_output)
+        mmt_output = torch.permute(mmt_output, (0, 2, 1))
+        mmt_output = torch.squeeze(mmt_output)
+        print("shape of model output:", mmt_output.shape)
+        model_output = {"scores": self.calculate_logits(mmt_output)}
         return model_output
 
     def _forward_txt_encoding(self, sample_list, fwd_results):
