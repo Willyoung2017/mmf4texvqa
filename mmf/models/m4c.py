@@ -178,6 +178,7 @@ class M4C(BaseModel):
         # return results
 
         model_output = {"scores": self.calculate_logits(fwd_results["mmt_seq_output"])}
+        print("shape of model output:", fwd_results["mmt_seq_output"].shape)
         return model_output
 
     def _forward_txt_encoding(self, sample_list, fwd_results):
