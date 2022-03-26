@@ -25,7 +25,7 @@ dataset_config:
               do_lower_case: true
           max_seq_length: 20
       answer_processor:
-        type: logit_m4c
+        type: logit
         params:
           text_hidden_dim: 768
           obj_hidden_dim: 2048

@@ -104,8 +104,6 @@ class ClassifierLayer(nn.Module):
             self.module = WeightNormClassifier(in_dim, out_dim, **kwargs)
         elif classifier_type == "logit":
             self.module = LogitClassifier(in_dim, out_dim, **kwargs)
-        elif classifier_type == "logit_m4c":
-            self.module = LogitM4CClassifier(in_dim, out_dim, **kwargs)
         elif classifier_type == "language_decoder":
             self.module = LanguageDecoder(in_dim, out_dim, **kwargs)
         elif classifier_type == "bert":
@@ -183,7 +181,8 @@ class MLPClassifer(nn.Module):
             x = layer(x)
         return x
 
-
+'''
+# original logit classifier
 class LogitClassifier(nn.Module):
     def __init__(self, in_dim, out_dim, **kwargs):
         super().__init__()
@@ -214,9 +213,10 @@ class LogitClassifier(nn.Module):
         logit_value = text_val + image_val
 
         return logit_value
+'''
 
-
-class LogitM4CClassifier(nn.Module):
+# modified for m4c
+class LogitClassifier(nn.Module):
     def __init__(self, in_dim, out_dim, **kwargs):
         super().__init__()
         input_dim = in_dim
