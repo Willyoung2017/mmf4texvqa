@@ -178,7 +178,7 @@ class M4C(BaseModel):
         # return results
 
         # reshape mmt output for classifier
-        mmt_output = fwd_results["mmt_seq_output"]
+        mmt_output = fwd_results["mmt_seq_output"].to(device="cuda")
         mmt_output = torch.permute(mmt_output, (0, 2, 1))
         linear_transform = nn.Linear(mmt_output.shape[2], 1)
         mmt_output = linear_transform(mmt_output)
