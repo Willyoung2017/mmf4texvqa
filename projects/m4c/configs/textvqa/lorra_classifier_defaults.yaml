@@ -25,12 +25,17 @@ dataset_config:
               do_lower_case: true
           max_seq_length: 20
       answer_processor:
-        type: logit
-        params:
-          text_hidden_dim: 768
-          obj_hidden_dim: 2048
-          ocr_hidden_dim: 3002
-
+        type: soft_copy_answer
+          params:
+            vocab_file: textvqa/defaults/extras/vocabs/answers_textvqa_more_than_1.txt
+            preprocessor:
+              type: simple_word
+              params: { }
+            context_preprocessor:
+              type: simple_word
+              params: { }
+            max_length: 50
+            num_answers: 10
       copy_processor:
         type: copy
         params:
