@@ -269,6 +269,7 @@ class M4C(BaseModel):
         )
         fwd_results.update(mmt_results)
 
+    '''
     def _forward_output(self, sample_list, fwd_results):
         mmt_dec_output = fwd_results["mmt_dec_output"]
         mmt_ocr_output = fwd_results["mmt_ocr_output"]
@@ -300,6 +301,7 @@ class M4C(BaseModel):
                 # decoding
                 argmax_inds = fwd_results["scores"].argmax(dim=-1)
                 fwd_results["prev_inds"][:, 1:] = argmax_inds[:, :-1]
+    '''
 
     def get_optimizer_parameters(self, config):
         optimizer_param_groups = []
@@ -495,7 +497,7 @@ class OcrPtrNet(nn.Module):
 
         return scores
 
-
+'''
 class PrevPredEmbeddings(nn.Module):
     def __init__(self, config):
         super().__init__()
@@ -543,7 +545,7 @@ class PrevPredEmbeddings(nn.Module):
         dec_emb = raw_dec_emb + embeddings
 
         return dec_emb
-
+'''
 
 def _get_mask(nums, max_num):
     # non_pad_mask: b x lq, torch.float32, 0. on PAD
