@@ -184,7 +184,6 @@ class M4C(BaseModel):
         mmt_output = linear_transform(mmt_output)
         mmt_output = torch.permute(mmt_output, (0, 2, 1))
         mmt_output = torch.squeeze(mmt_output)
-        print("shape of model output:", mmt_output.shape)
         model_output = {"scores": self.calculate_logits(mmt_output)}
         return model_output
 

@@ -247,8 +247,6 @@ class LogitBinaryCrossEntropy(nn.Module):
         scores = model_output["scores"]
         targets = sample_list["targets"]
         loss = F.binary_cross_entropy_with_logits(scores, targets, reduction="mean")
-        print("shape of scores", scores.shape)
-        print("shape of targets", targets.shape)
 
         return loss * targets.size(1)
 
