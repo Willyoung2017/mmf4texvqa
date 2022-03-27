@@ -1,3 +1,4 @@
+export CUDA_VISIBLE_DEVICES=0
 export PYTHONPATH=.
 python mmf_cli/run.py dataset=textvqa \
   model=m4c \
